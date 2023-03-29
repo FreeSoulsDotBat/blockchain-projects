@@ -1,4 +1,3 @@
-.encryptedKey.json
 node_modules
 .env
 coverage
@@ -10,5 +9,3 @@ cache
 artifacts
 gas-report.txt
 typechain-types
-gas-report.txt 
-package-lock.json

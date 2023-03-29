@@ -1,40 +1,24 @@
-# Hardhat Simple Storage
+# Hardhat Simple Storage - Typescript Edition
 
 This is a section of the Javascript Blockchain/Smart Contract FreeCodeCamp Course.
 
-*[⌨️ (08:20:17) Lesson 6: Hardhat Simple Storage](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=30017s)*
-
-*This repo has been updated for Sepolia over Goerli.*
+⌨️ [(08:20:17) Lesson 6: Hardhat Simple Storage](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=30017s)
 
 [Full Repo](https://github.com/smartcontractkit/full-blockchain-solidity-course-js)
 
-- [Hardhat Simple Storage](#hardhat-simple-storage)
-- [- Usage](#--usage)
+- [Hardhat Simple Storage - Typescript Edition](#hardhat-simple-storage---typescript-edition)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
+  - [Requirements](#requirements-1)
   - [Quickstart](#quickstart)
   - [Typescript](#typescript)
-    - [Optional Gitpod](#optional-gitpod)
-- [Usage](#usage)
-  - [Testing](#testing)
-    - [Test Coverage](#test-coverage)
-  - [Estimate gas](#estimate-gas)
-  - [Local Deployment](#local-deployment)
-    - [Important localhost note](#important-localhost-note)
-  - [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
-    - [Verify on etherscan](#verify-on-etherscan)
-- [In it's current state, if you have your api key set, it will auto verify rinkeby contracts!](#in-its-current-state-if-you-have-your-api-key-set-it-will-auto-verify-rinkeby-contracts)
-- [Linting](#linting)
-- [Thank you!](#thank-you)
-    - [Optional Gitpod](#optional-gitpod)
 - [Useage](#useage)
   - [Testing](#testing)
     - [Test Coverage](#test-coverage)
+- [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
   - [Estimate gas](#estimate-gas)
-  - [Local Deployment](#local-deployment)
-    - [Important localhost note](#important-localhost-note)
-  - [Deployment to a testnet or mainnet](#deployment-to-a-testnet-or-mainnet)
-    - [Verify on etherscan](#verify-on-etherscan)
+  - [Verify on etherscan](#verify-on-etherscan)
+- [Typescript differences](#typescript-differences)
 - [Linting](#linting)
 - [Thank you!](#thank-you)
 
@@ -48,7 +32,7 @@ This project is apart of the Hardhat FreeCodeCamp video.
   - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
 - [Nodejs](https://nodejs.org/en/)
   - You'll know you've installed nodejs right if you can run:
-    - `node --version` and get an output like: `vx.x.x`
+    - `node --version` and get an ouput like: `vx.x.x`
 - [Yarn](https://yarnpkg.com/getting-started/install) instead of `npm`
   - You'll know you've installed yarn right if you can run:
     - `yarn --version` and get an output like: `x.x.x`
@@ -60,7 +44,7 @@ This project is apart of the Hardhat FreeCodeCamp video.
 git clone https://github.com/PatrickAlphaC/hardhat-simple-storage-fcc
 cd hardhat-simple-storage-fcc
 yarn
-yarn hardhat
+yarn typechain
 ```
 
 ## Typescript
@@ -71,66 +55,30 @@ For the typescript edition, run:
 git checkout typescript
 ```
 
-### Optional Gitpod
 
-If you can't or don't want to run and install locally, you can work with this repo in Gitpod. If you do this, you can skip the `clone this repo` part.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/PatrickAlphaC/hardhat-simple-storage-fcc)
-
-
-# Usage
+# Useage
 
 Deploy:
 
 ```
-npx hardhat run scripts/deploy.js
+yarn hardhat run scripts/deploy.ts
 ```
 
 ## Testing
 
 ```
-npx hardhat test
+yarn hardhat test
 ```
 
 ### Test Coverage
 
 ```
-npx hardhat coverage
+yarn hardhat coverage
 ```
 
-## Estimate gas
+# Deployment to a testnet or mainnet
 
-You can estimate how much gas things cost by running:
-
-```
-npx hardhat test
-```
-
-And you'll see and output file called `gas-report.txt`
-
-## Local Deployment 
-
-If you'd like to run your own local hardhat network, you can run:
-
-```
-npx hardhat node
-```
-
-And then **in a different terminal**
-
-```
-npx hardhat run scripts/deploy.js --network localhost
-```
-
-And you should see transactions happen in your terminal that is running `npx hardhat node`
-
-### Important localhost note
-
-If you use metamask with a local network, everytime you shut down your node, you'll need to reset your account. Settings -> Advanced -> Reset account. Don't do this with a metamask you have real funds in. And maybe don't do this if you're a little confused by this. 
-
-## Deployment to a testnet or mainnet
-
-1. Setup environment variables
+1. Setup environment variabltes
 
 You'll want to set your `SEPOLIA_RPC_URL` and `PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
 
@@ -145,20 +93,39 @@ Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesn
 3. Deploy
 
 ```
-npx hardhat run scripts/deploy.js --network sepolia
+yarn hardhat run scripts/deploy.ts --network sepolia
 ```
 
-### Verify on etherscan
+## Estimate gas
 
-If you deploy to a testnet or mainnet, you can verify it if you get an [API Key](https://etherscan.io/myapikey) from Etherscan and set it as an environment variable named `ETHERSCAN_API_KEY`. You can pop it into your `.env` file as seen in the `.env.example`.
+You can estimate how much gas things cost by running:
+
+```
+yarn hardhat test
+```
+
+And you'll see and output file called `gas-report.txt`
+
+## Verify on etherscan
+
+If you deploy to a testnet or mainnet, you can verify it if you get an [API Key](https://etherscan.io/myapikey) from Etherscan and set it as an environemnt variable named `ETHERSCAN_API_KEY`. You can pop it into your `.env` file as seen in the `.env.example`.
 
 In it's current state, if you have your api key set, it will auto verify sepolia contracts!
 
 However, you can manual verify with:
 
 ```
-npx hardhat verify --constructor-args arguments.js DEPLOYED_CONTRACT_ADDRESS
+yarn hardhat verify --constructor-args arguments.js DEPLOYED_CONTRACT_ADDRESS
 ```
+# Typescript differences
+
+1. `.js` files are now `.ts`
+2. We added a bunch of typescript and typing packages to our `package.json`
+3. The biggest one being [typechain](https://github.com/dethcrypto/TypeChain)
+   1. This gives your contracts static typing, meaning you'll always know exactly what functions a contract can call. 
+   2. This gives us `factories` that are specific to the contracts they are factories of. See the tests folder for a version of how this is implemented. 
+4. We use `imports` instead of `require`. Confusing to you? [Watch this video](https://www.youtube.com/watch?v=mK54Cn4ceac)
+5. Add `tsconfig.json`
 
 # Linting
 
