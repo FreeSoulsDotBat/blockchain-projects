@@ -2,6 +2,8 @@ import { ethers } from "ethers"
 import * as fs from "fs-extra"
 import "dotenv/config"
 
+//REMEMBER TO SET THE PRIVATE_KEY_PASSWORD IN THE PROCESS BEFORE (EQUALS TO PASSWORD)
+
 async function main() {
     // First, compile this!
     // And make sure to have your ganache network up!
@@ -22,6 +24,7 @@ async function main() {
     console.log("Deploying, please wait...")
 
     const contract = await contractFactory.deploy()
+    await contract.deployTransaction.wait(1)
     console.log(`Contract deployed to ${contract.address}`)
 
     // console.log("Here is the transaction response:");
